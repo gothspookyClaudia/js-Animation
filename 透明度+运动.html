@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		*{margin:0;padding:0;}
+		ul,li{
+			list-style: none;
+		}
+		ul li{
+			width: 200px;
+			height: 100px;
+			background: red;
+			border: 4px solid black;
+			filter:alpha(opacity:30);
+			opacity:0.3;
+			margin-bottom: 10px;
+		}
+	</style>
+	<script type="text/javascript">
+	window.onload=function(){
+		var li1 = document.getElementById('li1');	
+		var li2 = document.getElementById('li2')
+			li1.onmouseover=function(){
+				startMove(this,'opacity',100);
+		}
+			li1.onmouseout=function(){
+				startMove(this,'opacity',30);
+			}
+			li2.onmouseover=function(){
+				startMove(this,'width',400);
+		}
+			li2.onmouseout=function(){
+				startMove(this,'width',200);
+			}
+		}
+	function getStyle(obj,attr){
+            if(obj.currentStyle){
+                 return obj.currentStyle[attr];
+              }
+            else{
+                 return getComputedStyle(obj,false)[attr];
+                }
+            }
+ 
+	function startMove(obj,attr,iTarget){
+		clearInterval(obj.timer);	
+		obj.timer=setInterval(function(){
+			if(attr =='opacity'){
+				var icur=Math.round(parseFloat(getStyle(obj,attr))*100);
+			}
+			else{
+				var icur=parseInt(getStyle(obj,attr));
+			}
+			var speed = (iTarget-icur)/8;
+			speed = speed>0?Math.ceil(speed):Math.floor(speed);
+			if(iTarget == icur){
+				clearInterval(obj.timer);
+			}
+			else{
+				if(attr =='opacity'){
+					obj.style.filter='alpha(opacity:'+(icur+speed)+')';
+					obj.style.opacity=(icur+speed)/100;
+				}
+				else{
+					obj.style[attr]=icur+speed+'px';
+				}
+			}
+		},30)
+	}
+</script>
+</head>
+<body>
+	<ul>
+		<li id="li1"></li>
+		<li id="li2"></li>
+	</ul>
+</body>
+</html>

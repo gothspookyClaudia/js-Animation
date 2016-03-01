@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="taobao.css">
+<script type="text/javascript" src="taobao.js"></script>
+<script type="text/javascript">
+	window.onload=function(){
+		var aList=document.getElementsByTagName('a');
+		for(var i=0; i<aList.length; i++){
+			aList[i].onmouseover=function(){
+				var _this=this.getElementsByTagName('i')[0];
+				startMove(_this,{top:-18,opacity:0},function(){
+					_this.style.top=28+'px';
+					startMove(_this,{top:18,opacity:100});
+				});
+			}
+		}
+	}
+</script>
+</head>
+<body>
+<div id="div1">
+<a href="#"><i><img src="icon/20150820091800.png" ></i><p>理财</p></a>
+<a href="#"><i><img src="icon/20150820091826.png" ></i><p>找服务</p></a>
+<a href="#"><i><img src="icon/20150820091933.png" ></i><p>音乐</p></a>	
+<a href="#"><i><img src="icon/20150820091955.png" ></i><p>理财</p></a>
+<a href="#"><i><img src="icon/20150820092109.png"></i><p>水电煤</p></a>
+<a href="#"><i><img src="icon/20150820092137.png" ></i><p>火车票</p></a>
+<a href="#"><i><img src="icon/20150820092149.png" ></i><p>外卖</p></a>
+<a href="#"><i><img src="icon/20150820092158.png" ></i><p>电影</p></a>
+</div>	
+</body>
+</html>
